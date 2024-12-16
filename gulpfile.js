@@ -3,13 +3,13 @@ import gulp from "gulp";
 import autoprefixer from "gulp-autoprefixer";
 import cleanCSS from "gulp-clean-css";
 import concat from "gulp-concat";
+import fileInclude from "gulp-file-include";
 import htmlmin from "gulp-htmlmin";
 import gulpSass from "gulp-sass";
 import sourcemaps from "gulp-sourcemaps";
 import uglify from "gulp-uglify";
 import * as dartSass from "sass";
 import yargs from "yargs";
-import fileInclude from "gulp-file-include";
 
 const sass = gulpSass(dartSass);
 
@@ -19,7 +19,7 @@ const isDev = !isProduction;
 
 const paths = {
   html: "./src/**/*.html",
-  scss: "./src/styles/*.scss",
+  scss: "./src/styles/main.scss",
   js: "./src/scripts/**/*.js",
   assets: "./src/assets/*",
 };
@@ -44,11 +44,15 @@ function html() {
 function styles() {
   return gulp
     .src(paths.scss)
-    .pipe(isDev ? sourcemaps.init() : gulp.dest("./dist/styles"))
-    .pipe(sass().on("error", sass.logError))
+    .pipe(sourcemaps.init())
+    .pipe(
+      sass({
+        includePaths: ["./src/styles"],
+      }).on("error", sass.logError),
+    )
     .pipe(autoprefixer())
     .pipe(cleanCSS())
-    .pipe(isDev ? sourcemaps.write(".") : gulp.dest("./dist/styles"))
+    .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("./dist/styles"));
 }
 
@@ -81,7 +85,7 @@ function watchFiles() {
       ui: false,
     });
     gulp.watch(paths.html, html).on("change", browserSync.reload);
-    gulp.watch(paths.scss, styles);
+    gulp.watch("./src/styles/**/*.scss", styles);
     gulp.watch(paths.js, scripts).on("change", browserSync.reload);
     gulp.watch(paths.assets, assets).on("change", browserSync.reload);
   }
