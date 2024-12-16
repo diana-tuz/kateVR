@@ -1,0 +1,105 @@
+@use "utils/vars";
+@use "utils/mixins";
+@use "utils/extends";
+
+.headerScrolled {
+  background: linear-gradient(#191536, #000);
+  opacity: 0.98;
+  transition: all 0.8s ease-in;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 12;
+  padding: 30px 0;
+  transition: all 0.8s ease-in;
+
+  &__select {
+    position: relative;
+    padding: 5px;
+  }
+  &__list {
+    display: none;
+    position: absolute;
+  }
+  &__lang {
+    display: flex;
+    gap: 5px;
+    color: vars.$light;
+    p {
+      color: inherit;
+    }
+    &:hover {
+      color: vars.$text;
+    }
+  }
+
+  &__wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__logo {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    &-img {
+      width: 4vw;
+
+      @media screen and (max-width: 768px) {
+        width: 8.72vw;
+      }
+
+      @media screen and (max-width: 320px) {
+        width: 18.12vw;
+      }
+    }
+  }
+
+  &__right {
+    align-items: center;
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+  }
+
+  &__nav {
+    gap: 35px;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+    }
+
+    &-link {
+      font-weight: 500;
+    }
+  }
+
+  &__button {
+    background-color: vars.$light;
+    display: none;
+    font-weight: 700;
+    padding: 13px 80px;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      background-color: vars.$text;
+    }
+
+    @media screen and (min-width: 768px) {
+      display: grid;
+    }
+  }
+  &__burger {
+    width: 20px;
+    height: 20px;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+}

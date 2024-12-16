@@ -1,0 +1,197 @@
+@use "utils/vars";
+@use "utils/mixins";
+@use "utils/extends";
+
+.about {
+  background: vars.$gradient;
+  padding: 50px 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 70px 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 100px 0;
+  }
+
+  &__product {
+    &-slider {
+      align-items: center;
+      grid-column: 1/3;
+      justify-content: center;
+      margin-bottom: 20px;
+      overflow: hidden;
+
+      @media screen and (min-width: 768px) {
+        grid-column: 1/3;
+        margin-bottom: 183px;
+        min-width: 340px;
+      }
+
+      @media screen and (min-width: 1280px) {
+        grid-column: 3/8;
+        width: 100%;
+      }
+
+      &-h2 {
+        margin-bottom: 20px;
+
+        @media screen and (min-width: 768px) {
+          display: none;
+        }
+      }
+      &_content {
+        width: 100%;
+        margin-bottom: 15px;
+
+        &-wrapper {
+          display: flex;
+          transition: transform 0.8s ease-in-out;
+          width: 100%;
+        }
+      }
+
+      &_image {
+        flex: 1 0 100%;
+        height: 100%;
+        width: 100%;
+
+        @media screen and (min-width: 768px) {
+          aspect-ratio: 1.25;
+        }
+
+        @media screen and (min-width: 1280px) {
+          aspect-ratio: auto;
+        }
+      }
+
+      &_buttons {
+        display: none;
+        align-items: center;
+        border-bottom: 1px solid #212121;
+        gap: 15px;
+        justify-content: center;
+        width: fit-content;
+
+        @media screen and (min-width: 1280px) {
+          display: flex;
+        }
+      }
+
+      &_button {
+        padding: 13px 8px;
+        width: 85px;
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+          color: vars.$light;
+        }
+      }
+
+      &_dots {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 15px;
+
+        @media screen and (min-width: 1280px) {
+          display: none;
+        }
+      }
+
+      &_dot {
+        background: vars.$gray;
+        border-radius: 50%;
+        height: 5px;
+        width: 5px;
+      }
+    }
+
+    &-title {
+      grid-column: 1/3;
+
+      @media screen and (min-width: 768px) {
+        grid-column: 3/7;
+      }
+
+      @media screen and (min-width: 1280px) {
+        grid-column: 8/12;
+      }
+
+      &_h2 {
+        display: none;
+
+        @media screen and (min-width: 768px) {
+          margin-bottom: 40px;
+          display: block;
+        }
+
+        &-blue {
+          color: vars.$light;
+        }
+      }
+
+      &_description {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  &__meet {
+    &-title {
+      grid-column: 1/3;
+
+      @media screen and (min-width: 768px) {
+        grid-column: 1/5;
+      }
+
+      @media screen and (min-width: 1280px) {
+        grid-column: 2/6;
+      }
+
+      &_button {
+        display: none;
+
+        @media screen and (min-width: 768px) {
+          display: block;
+        }
+      }
+
+      &_small {
+        color: vars.$light;
+        margin-bottom: 15px;
+      }
+
+      &_h3 {
+        margin-bottom: 40px;
+
+        &-blue {
+          color: vars.$light;
+        }
+      }
+
+      &_description {
+        margin-bottom: 40px;
+      }
+    }
+
+    &-img {
+      display: none;
+
+      @media screen and (min-width: 768px) {
+        background-image: url("../assets/adout.png");
+        background-position: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        grid-column: 5/7;
+      }
+
+      @media screen and (min-width: 1280px) {
+        background-position: center;
+        grid-column: 6/12;
+      }
+    }
+  }
+}

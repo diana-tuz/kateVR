@@ -3,12 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BOSE</title>
-    <link rel="shortcut icon" href="./assets/favicon.png" type="image/png" />
+    <title>KatVR</title>
     <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="icon" href="./assets/favicon.ico" />
   </head>
-  <body>
-    <h1>gulp template</h1>
-    <script type="text/javascript" src="scripts/main.js"></script>
+
+  <body id="body">
+    @@include("components/header.html")
+
+    <main id="main">
+      <a class="arrowUp" id="arrowUp" href="#main">
+        <img src="./assets/arrowUp.png" alt="arrow" />
+      </a>
+      @@include("components/menu.html") @@include("components/hero.html")
+      @@include("components/info.html") @@include("components/about.html")
+      @@include("components/tech.html") @@include("components/why.html")
+      @@include("components/contactUs.html")
+    </main>
+    @@include("components/footer.html")
+    <script src="scripts/main.js" defer></script>
   </body>
 </html>

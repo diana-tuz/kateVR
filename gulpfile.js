@@ -9,6 +9,7 @@ import sourcemaps from "gulp-sourcemaps";
 import uglify from "gulp-uglify";
 import * as dartSass from "sass";
 import yargs from "yargs";
+import fileInclude from "gulp-file-include";
 
 const sass = gulpSass(dartSass);
 
@@ -20,12 +21,18 @@ const paths = {
   html: "./src/**/*.html",
   scss: "./src/styles/*.scss",
   js: "./src/scripts/**/*.js",
-  assets: "./src/assets/**/*",
+  assets: "./src/assets/*",
 };
 
 function html() {
   return gulp
     .src(paths.html)
+    .pipe(
+      fileInclude({
+        prefix: "@@",
+        basepath: "@file",
+      }),
+    )
     .pipe(
       isProduction
         ? htmlmin({ collapseWhitespace: true })
